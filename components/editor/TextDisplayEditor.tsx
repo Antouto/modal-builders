@@ -2,7 +2,7 @@ import { UseFormReturn } from 'react-hook-form'
 import { modalSchema } from '@/lib/schemas'
 import z from 'zod'
 import { FormField, FormItem, FormLabel, FormControl } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 export default function TextDisplayEditor({
   form,
@@ -19,7 +19,7 @@ export default function TextDisplayEditor({
         <FormItem>
           <FormLabel required count={form.watch(`components.${index}.content`)?.length ?? 0}>Content</FormLabel>
           <FormControl>
-            <Input 
+            <Textarea 
               {...field} 
               onChange={(e) => {
                 field.onChange(e);
