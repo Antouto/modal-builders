@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Discord modal builder",
-  description: "Generate JSON and code for discord modals.",
+  description: "Generate JSON for discord modals.",
 };
 
 export default function RootLayout({
