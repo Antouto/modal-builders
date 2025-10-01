@@ -7,12 +7,20 @@
   --text-default: #323339;
   --text-muted: #6d6e77;
   --text-danger: #a4232c;
+  --custom-input-background-color: #00000014;
+  --custom-input-border-color: #97979f5c;
+  --custom-input-text-color: #323339;
+  --custom-input-hover-border-color: #97979f5c;
+  --custom-input-focus-border-color: #0074e3;
   --base-lowest: #f3f3f4;
   --base-lower: #fbfbfb;
   --base-low: #fbfbfb;
   --surface-high: #ffffff;
   --surface-higher: #ffffff;
   --surface-highest: #ffffff;
+  --control-background-secondary-default: #97979f1f;
+  --control-border-secondary-default: #97979f33;
+  --control-text-secondary-default: #2f3035;
   --border-faint: #97979f33; 
   --border-subtle: #97979f47; 
   --border-normal: #97979f5c; 
@@ -57,6 +65,11 @@
 @theme inline {
   --color-text-default: var(--text-default);
   --color-text-danger: var(--text-danger);
+  --color-custom-input-background-color: var(--custom-input-background-color);
+  --color-custom-input-border-color: var(--custom-input-border-color);
+  --color-custom-input-text-color: var(--custom-input-text-color);
+  --color-custom-input-hover-border-color: var(--custom-input-hover-border-color);
+  --color-custom-input-focus-border-color: var(--custom-input-focus-border-color);
   --color-text-muted: var(--text-muted);
   --color-base-lowest: var(--base-lowest);
   --color-base-lower: var(--base-lower);
@@ -64,6 +77,9 @@
   --color-surface-high: var(--surface-high);
   --color-surface-higher: var(--surface-higher);
   --color-surface-highest: var(--surface-highest);
+  --color-control-background-secondary-default: var(--control-background-secondary-default);
+  --color-control-border-secondary-default: var(--control-border-secondary-default);
+  --color-control-text-secondary-default: var(--control-text-secondary-default);
   --color-border-normal: var(--border-normal);
   --color-border-faint: var(--border-faint);
   --color-border-subtle: var(--border-subtle);
@@ -113,12 +129,19 @@
     --text-default: #efeff0;
     --text-muted: #94959c;
     --text-danger: #f57976;
+    --custom-input-border-color: #97979f33;
+    --custom-input-text-color: #efeff0;
+    --custom-input-hover-border-color: #97979f33;
+    --custom-input-focus-border-color: #5197ed;
     --base-lowest: #121214;
     --base-lower: #1a1a1e;
     --base-low: #202024;
     --surface-high: #242429;
     --surface-higher: #28282d;
     --surface-highest: #2d2d32;
+    --control-background-secondary-default: #97979f14;
+    --control-border-secondary-default: #97979f0a;
+    --control-text-secondary-default: #fbfbfb;
     --border-faint: #97979f0a;
     --border-subtle: #97979f1f;
     --border-normal: #97979f33;
@@ -259,7 +282,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #202024;
+  background-color: var(--base-low);
   border: 4px solid transparent;
   border-radius: 8px;
   background-clip: padding-box;

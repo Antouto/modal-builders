@@ -84,16 +84,16 @@ export default function Modal({ form }: {
               case ComponentType.Label:
                 const label = component;
                 return <div key={index} className="pr-[18px] pb-[1em] pl-6">
-                  <p className="text-[18px] mb-2 text-[#fbfbfb] font-[600]">
+                  <p className="text-[18px] mb-2 text-normal font-[600]">
                     {label.label.trim()}
                     {label.component.required !== false && (
-                      <span style={{ color: "#fa777b", paddingLeft: "4px" }}>
+                      <span className="text-text-danger" style={{ paddingLeft: "4px" }}>
                         *
                       </span>
                     )}
                   </p>
                   {label.description && (
-                    <p className="text-[14px] text-[#fbfbfb] mb-2">
+                    <p className="text-[14px] text-normal mb-2">
                       {label.description.trim()}
                     </p>
                   )}
@@ -121,10 +121,10 @@ export default function Modal({ form }: {
                               control: (baseStyles) => ({
                                 ...baseStyles,
                                 height: "43.5px",
-                                background: "#202024",
-                                border: "1px solid #97979f1f",
+                                background: "var(--custom-input-background-color)",
+                                border: "1px solid var(--custom-input-border-color)",
                                 "&:hover": {
-                                  borderColor: "#97979f1f",
+                                  borderColor: "var(--custom-input-hover-border-color)",
                                 },
                                 boxShadow: "none",
                                 boxSizing: "content-box",
@@ -214,14 +214,14 @@ export default function Modal({ form }: {
                         case ComponentType.TextInput:
                           return (label.component.style === 1 ? (
                             <Input
-                              className="text-[#efeff0] bg-[#00000014] border border-[#97979f33] placeholder-[#807c84] h-[40px] rounded-[8px] text-[16px] w-full focus:border-[rgb(81,151,237)] focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                              className="text-custom-input-text-color bg-custom-input-background-color border border-custom-input-border-color hover:border-custom-input-hover-border-color placeholder-[#807c84] h-[40px] rounded-[8px] text-[16px] w-full focus:border-custom-input-focus-border-color focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
                               style={{ transition: 'border-color .2s ease-in-out' }}
                               placeholder={(label.component.placeholder || '').trim()}
                               defaultValue={(label.component.value || '').trim()}
                             />
                           ) : (
                             <Textarea
-                              className="text-[#efeff0] bg-[#00000014] border border-[#97979f33] placeholder-[#807c84] p-[10px] py-[6px] pr-[38.920px] rounded-[8px] text-[16px] resize-none focus:border-[rgb(81,151,237)] w-full focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                              className="text-custom-input-text-color bg-custom-input-background-color border border-custom-input-border-color hover:border-custom-input-hover-border-color placeholder-[#807c84] p-[10px] py-[6px] pr-[38.920px] rounded-[8px] text-[16px] resize-none focus:border-custom-input-focus-border-color w-full focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
                               style={{ minHeight: "85px", transition: 'border-color .2s ease-in-out' }}
                               placeholder={label.component.placeholder}
                               defaultValue={label.component.value}
@@ -243,10 +243,10 @@ export default function Modal({ form }: {
                               control: (baseStyles) => ({
                                 ...baseStyles,
                                 height: "43.5px",
-                                background: "#202024",
-                                border: "1px solid #97979f1f",
+                                background: "var(--custom-input-background-color)",
+                                border: "1px solid var(--custom-input-border-color)",
                                 "&:hover": {
-                                  borderColor: "#97979f1f",
+                                  borderColor: "var(--custom-input-hover-border-color)",
                                 },
                                 boxShadow: "none",
                                 boxSizing: "content-box",
@@ -354,10 +354,10 @@ export default function Modal({ form }: {
                               control: (baseStyles) => ({
                                 ...baseStyles,
                                 height: "43.5px",
-                                background: "#202024",
-                                border: "1px solid #97979f1f",
+                                background: "var(--custom-input-background-color)",
+                                border: "1px solid var(--custom-input-border-color)",
                                 "&:hover": {
-                                  borderColor: "#97979f1f",
+                                  borderColor: "var(--custom-input-hover-border-color)",
                                 },
                                 boxShadow: "none",
                                 boxSizing: "content-box",
@@ -465,10 +465,10 @@ export default function Modal({ form }: {
                               control: (baseStyles) => ({
                                 ...baseStyles,
                                 height: "43.5px",
-                                background: "#202024",
-                                border: "1px solid #97979f1f",
+                                background: "var(--custom-input-background-color)",
+                                border: "1px solid var(--custom-input-border-color)",
                                 "&:hover": {
-                                  borderColor: "#97979f1f",
+                                  borderColor: "var(--custom-input-hover-border-color)",
                                 },
                                 boxShadow: "none",
                                 boxSizing: "content-box",
@@ -559,10 +559,10 @@ export default function Modal({ form }: {
                               control: (baseStyles) => ({
                                 ...baseStyles,
                                 height: "43.5px",
-                                background: "#202024",
-                                border: "1px solid #97979f1f",
+                                background: "var(--custom-input-background-color)",
+                                border: "1px solid var(--custom-input-border-color)",
                                 "&:hover": {
-                                  borderColor: "#97979f1f",
+                                  borderColor: "var(--custom-input-hover-border-color)",
                                 },
                                 boxShadow: "none",
                                 boxSizing: "content-box",
@@ -650,7 +650,7 @@ export default function Modal({ form }: {
                           />;
 
                         case 19:
-                          return <div className="bg-[#00000014] border border-[#97979f33] rounded-[8px] p-2 h-[122px] flex items-center justify-center gap-[8px] flex-col">
+                          return <div className="bg-custom-input-background-color border border-custom-input-border-color hover:border-custom-input-hover-border-color rounded-[8px] p-2 h-[122px] flex items-center justify-center gap-[8px] flex-col">
                             <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#fbfbfb" d="M13.82 21.7c.17.05.14.3-.04.3H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h7.5c.28 0 .5.22.5.5V5a5 5 0 0 0 5 5h2.5c.28 0 .5.22.5.5v2.3a.4.4 0 0 1-.68.27l-.2-.2a3 3 0 0 0-4.24 0l-4 4a3 3 0 0 0 0 4.25c.3.3.6.46.94.58Z"></path><path fill="#fbfbfb" d="M21.66 8c.03 0 .05-.03.04-.06a3 3 0 0 0-.58-.82l-4.24-4.24a3 3 0 0 0-.82-.58.04.04 0 0 0-.06.04V5a3 3 0 0 0 3 3h2.66ZM18.3 14.3a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1-1.4 1.4L20 17.42V23a1 1 0 1 1-2 0v-5.59l-2.3 2.3a1 1 0 0 1-1.4-1.42l4-4Z"></path></svg>
                             <div className="text-[16px] text-[#94959c] font-medium">Drop file{((typeof label.component.max_values === 'number') && (label.component.max_values > 1)) ? 's' : ''} here or <span className="text-[#5197ed] hover:underline hover:cursor-not-allowed">browse</span></div>
                             <div className="text-[12px] text-[#94959c] font-medium">Upload {((typeof label.component.max_values === 'number') && (label.component.max_values > 1)) ? `up to ${label.component.max_values} files` : 'a file'} under 10MB.</div>
@@ -688,11 +688,11 @@ export default function Modal({ form }: {
         <div className="flex gap-2 p-[24px] pt-[8px]">
           <Button
             variant="secondary"
-            className="flex-1 w-full h-[38px] text-base font-medium hover:cursor-not-allowed"
+            className="flex-1 w-full h-[38px] font-medium hover:cursor-not-allowed"
           >
             Cancel
           </Button>
-          <Button className="flex-1 w-full h-[38px] text-base font-medium hover:cursor-not-allowed">
+          <Button className="flex-1 w-full h-[38px] font-medium hover:cursor-not-allowed">
             Submit
           </Button>
         </div>

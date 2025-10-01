@@ -71,10 +71,10 @@ function FormReactSelect({ ...props }: any) {
         control: (baseStyles) => ({
           ...baseStyles,
           minHeight: "43.5px",
-          background: "#28282d",
-          border: error ? "1px solid oklab(0.71871 0.140732 0.059904)" : "1px solid #97979f1f",
+          background: "var(--custom-input-background-color)",
+          border: error ? "1px solid oklab(0.71871 0.140732 0.059904)" : "1px solid var(--custom-input-border-color)",
           "&:hover": {
-            borderColor: error ? "oklab(0.71871 0.140732 0.059904)" : "#97979f1f",
+            borderColor: error ? "oklab(0.71871 0.140732 0.059904)" : "var(--custom-input-hover-border-color)",
           },
           boxShadow: "none",
           boxSizing: "content-box",

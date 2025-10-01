@@ -294,29 +294,29 @@ export default function Home() {
           <p className="font-semibold mb-1">Github</p>
 
           <a href="https://github.com/Antouto/modal-builders" target="_blank">
-  <div className="flex gap-2">
-    <img alt="Star on GitHub"
-         src="https://img.shields.io/github/stars/Antouto/modal-builders?style=for-the-badge&logo=github&label=Star+on+GitHub&color=007ec6&cacheBust=1" />
-    <img alt="GitHub contributors"
-         src="https://img.shields.io/github/contributors/Antouto/modal-builders?style=for-the-badge&color=248045" />
-    <img alt="GitHub commits"
-         src="https://img.shields.io/github/commit-activity/t/Antouto/modal-builders?style=for-the-badge&color=248045" />
-  </div>
-</a>
-<p className="font-semibold mb-1 mt-2">Not a programmer?</p>
-<a href="https://discordforms.app" target="_blank">
-              <Button variant="secondary">Create modals with Forms bot</Button>
+            <div className="flex gap-2 flex-wrap">
+              <img alt="Star on GitHub"
+                src="https://img.shields.io/github/stars/Antouto/modal-builders?style=for-the-badge&logo=github&label=Star+on+GitHub&color=007ec6&cacheBust=1" />
+              <img alt="GitHub contributors"
+                src="https://img.shields.io/github/contributors/Antouto/modal-builders?style=for-the-badge&color=248045" />
+              <img alt="GitHub commits"
+                src="https://img.shields.io/github/commit-activity/t/Antouto/modal-builders?style=for-the-badge&color=248045" />
+            </div>
+          </a>
+          <p className="font-semibold mb-1 mt-2">Not a programmer?</p>
+          <a href="https://discordforms.app" target="_blank">
+            <Button variant="secondary">Create modals with Forms bot</Button>
+          </a>
+          <p className="font-semibold mb-1 mt-2">Need message components?</p>
+          <div className="flex gap-2">
+            <a href="https://discohook.app" target="_blank">
+              <Button variant="secondary">Discohook</Button>
             </a>
-            <p className="font-semibold mb-1 mt-2">Need message components?</p>
-<div className="flex gap-2">
-  <a href="https://discohook.app" target="_blank">
-    <Button variant="secondary">Discohook</Button>
-  </a>
-  <a href="https://discord.builders" target="_blank">
-    <Button variant="secondary">Discord.builders</Button>
-  </a>
-</div>
-<hr className="border-border-subtle my-4" />
+            <a href="https://discord.builders" target="_blank">
+              <Button variant="secondary">Discord.builders</Button>
+            </a>
+          </div>
+          <hr className="border-border-subtle my-4" />
 
         </div>
         <div className="flex-1 min-w-0 lg:overflow-y-scroll p-4">
@@ -324,7 +324,7 @@ export default function Home() {
           <div className="mb-4">
             <Modal form={form} />
           </div>
-          
+
           <p className="font-semibold mb-1 mt-2">JSON</p>
           <pre className="overflow-auto lg:overflow-visible border border-border-subtle rounded-md p-4 bg-base-low">
             {JSON.stringify(form.watch(), null, 2)}

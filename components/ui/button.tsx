@@ -17,7 +17,7 @@ const buttonVariants = cva(
           "border border-[#97979f0a] px-[14px] py-2 border border-input bg-[#313338] hover:bg-accent hover:text-accent-foreground",
         "secondary-outline": "border border-[rgba(151,151,159,0.2)] px-[14px] bg-transparent hover:bg-[rgba(151,151,159,0.2)]", //not exactly like in discord
         secondary:
-          "bg-[rgba(151,151,159,0.12)] hover:bg-[rgba(151,151,159,0.2)] active:bg-[rgba(80,80,90,0.3)] text-[rgb(235,235,237)] border-[#97979f0a] border h-8 px-[14px] py-2",
+          "bg-control-background-secondary-default hover:bg-[rgba(151,151,159,0.2)] active:bg-[rgba(80,80,90,0.3)] text-control-text-secondary-default border-control-border-secondary-default border h-8 px-[14px] py-2",
         ghost:
           "text-[rgb(141,161,252)] hover:underline",
         link: "text-primary underline-offset-4 hover:underline",
