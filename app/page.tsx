@@ -28,6 +28,7 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import TextDisplayEditor from "@/components/editor/TextDisplayEditor";
 import Modal from "@/components/preview/Modal";
+import { useEffect, useRef, useState } from "react";
 
 function getComponentName(type: ComponentType | 19) {
   switch (type) {
@@ -52,8 +53,61 @@ function getComponentName(type: ComponentType | 19) {
   }
 }
 
+// Maximum safe total URL length (conservative limit for compatibility)
+const MAX_URL_LENGTH = 2000;
+
+// Encode UTF-8 string to base64
+function base64Encode(utf8: string): string {
+  const encoded = encodeURIComponent(utf8);
+  
+  // Convert percent-encoded string to characters that btoa can handle
+  const escaped = encoded.replace(/%[\dA-F]{2}/g, (hex) => {
+    return String.fromCharCode(Number.parseInt(hex.slice(1), 16));
+  });
+  
+  return btoa(escaped);
+}
+
+// Decode base64 to UTF-8 string
+function base64Decode(base64: string): string {
+  const decoded = atob(base64);
+  
+  // Convert each character to percent-encoded format
+  const encoded = decoded
+    .split("")
+    .map((char) => char.charCodeAt(0).toString(16))
+    .map((hex) => `%${hex.padStart(2, "0").slice(-2)}`)
+    .join("");
+  
+  return decodeURIComponent(encoded);
+}
+
+// Encode form state to URL-safe base64 string
+function encodeFormState(state: z.infer<typeof modalSchema>): string {
+  const json = JSON.stringify(state);
+  return base64Encode(json)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=/g, ""); // Remove padding
+}
+
+// Decode URL-safe base64 string to form state
+function decodeFormState(encoded: string): z.infer<typeof modalSchema> | null {
+  try {
+    // Convert URL-safe base64 back to standard base64
+    const base64 = encoded.replace(/-/g, "+").replace(/_/g, "/");
+    const json = base64Decode(base64);
+    return JSON.parse(json);
+  } catch (error) {
+    console.error('Failed to decode form state from URL fragment:', error);
+    return null;
+  }
+}
 
 export default function Home() {
+  const [isUrlTooLong, setIsUrlTooLong] = useState(false);
+  const isInitialMount = useRef(true);
+  
   const form = useForm<z.infer<typeof modalSchema>>({
     resolver: zodResolver(modalSchema),
     mode: 'onChange',
@@ -72,6 +126,57 @@ export default function Home() {
     }
   });
   const { fields, append, remove, move } = useFieldArray({ name: 'components', control: form.control });
+
+  // Load form state from URL fragment on initial mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const fragment = window.location.hash.substring(1); // Remove the # character
+    if (fragment) {
+      const decoded = decodeFormState(fragment);
+      if (decoded) {
+        form.reset(decoded);
+      }
+    }
+  }, []); // Empty dependency array - only run once on mount
+
+  // Update URL fragment when form state changes (with debouncing)
+  useEffect(() => {
+    // Skip the first render to avoid overwriting the loaded state
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    const debounceTimer = setTimeout(() => {
+      if (typeof window === 'undefined') return;
+      
+      // If form state is invalid, remove the fragment
+      if (!form.formState.isValid) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        return;
+      }
+      
+      const formState = form.watch();
+      const encoded = encodeFormState(formState);
+      
+      // Calculate the total URL length including domain, path, query string, and fragment
+      const baseUrl = window.location.origin + window.location.pathname + window.location.search;
+      const totalUrlLength = baseUrl.length + 1 + encoded.length; // +1 for the # character
+      
+      // Check if the total URL exceeds the safe length
+      if (totalUrlLength > MAX_URL_LENGTH) {
+        setIsUrlTooLong(true);
+        // Remove the fragment from the URL if it's too long
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      } else {
+        setIsUrlTooLong(false);
+        window.location.hash = encoded;
+      }
+    }, 300); // 300ms debounce delay
+
+    return () => clearTimeout(debounceTimer);
+  }, [form.watch(), form.formState.isValid]); // Watch all form changes and validation state
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -101,6 +206,14 @@ export default function Home() {
         <div className="flex-1 min-w-0 lg:overflow-y-scroll p-4">
           <Form {...form}>
             <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
+              {isUrlTooLong && (
+                <div className="bg-[#a1630014] border rounded-[8px] border-[#ce9c5c] p-[8px] text-[14px] mt-2 mb-4 flex gap-3 justify-between">
+                <div className="flex gap-[8px] items-center">
+                  <svg className="shrink-0" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="transparent"></circle><path fill="#ce9c5c" fillRule="evenodd" d="M12 23a11 11 0 1 0 0-22 11 11 0 0 0 0 22Zm1.44-15.94L13.06 14a1.06 1.06 0 0 1-2.12 0l-.38-6.94a1 1 0 0 1 1-1.06h.88a1 1 0 0 1 1 1.06Zm-.19 10.69a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z" clipRule="evenodd"></path></svg>
+                  <div>The modal is too big to be saved in the url</div>
+                </div>
+              </div>
+              )}
               <FormField
                 control={form.control}
                 name="title"

@@ -106,26 +106,30 @@ const stringSelectSchema = z.object({
   required: z.boolean().optional() // Whether this select menu is required or not, only used in modals
 }).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
   { path: ["max_values"], message: "Must be greater than or equal to min values" }
 ).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
@@ -179,13 +183,15 @@ const userSelectSchema = z.object({
   required: z.boolean().optional() // Whether this select menu is required or not, only used in modals
 }).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
@@ -250,13 +256,15 @@ const channelSelectSchema = z.object({
   required: z.boolean().optional() // Whether this select menu is required or not, only used in modals
 }).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
@@ -320,13 +328,15 @@ const roleSelectSchema = z.object({
   required: z.boolean().optional() // Whether this select menu is required or not, only used in modals
 }).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
@@ -390,13 +400,15 @@ const mentionableSelectSchema = z.object({
   required: z.boolean().optional() // Whether this select menu is required or not, only used in modals
 }).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
@@ -458,26 +470,30 @@ const fileUploadSchema = z.object({
   required: z.boolean().optional()
 }).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
   { path: ["max_values"], message: "Must be greater than or equal to min values" }
 ).refine(
   (val) => {
-    // Skip validation if either value is empty string or undefined
-    if (val.min_values === undefined || val.max_values === undefined) {
+    // Skip validation if min_values is undefined
+    if (val.min_values === undefined) {
       return true;
     }
-    // Both are numbers, check min <= max
-    if (typeof val.min_values === "number" && typeof val.max_values === "number") {
-      return val.min_values <= val.max_values;
+    // Get effective max_values (default to 1 if not set, as per Discord API)
+    const effectiveMaxValues = val.max_values ?? 1;
+    // Check min <= max
+    if (typeof val.min_values === "number") {
+      return val.min_values <= effectiveMaxValues;
     }
     return true;
   },
