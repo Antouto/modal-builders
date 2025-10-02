@@ -47,8 +47,8 @@ const CustomOption = (props: {
           />
         ) : null}
         <div>
-          <div className="text-[#fbfbfb] font-semibold text-[14px]">{data.label}</div>
-          <div className="text-muted-dark text-[14px]">{data.description || ''}</div>
+          <div className="text-header-primary font-semibold text-[14px]">{data.label}</div>
+          <div className="text-interactive-normal text-[14px]">{data.description || ''}</div>
         </div>
       </div>
     </div>
@@ -144,7 +144,7 @@ export default function Modal({ form }: {
                               }),
                               singleValue: (baseStyles) => ({
                                 ...baseStyles,
-                                color: "oklab(0.899401 -0.00192499 -0.00481987)",
+                                color: "var(--text-normal)",
                                 margin: "0",
                                 alignItems: "center",
                                 display: "flex",
@@ -152,12 +152,12 @@ export default function Modal({ form }: {
                               }),
                               multiValue: (baseStyles) => ({
                                 ...baseStyles,
-                                backgroundColor: '#28282d',
+                                backgroundColor: 'var(--base-low)',
                                 borderRadius: '4px',
                               }),
                               multiValueLabel: (baseStyles) => ({
                                 ...baseStyles,
-                                color: '#fbfbfb',
+                                color: 'var(--interactive-active)',
                                 fontWeight: '600',
                               }),
                               placeholder: (baseStyles) => ({
@@ -185,7 +185,7 @@ export default function Modal({ form }: {
                               menu: (baseStyles) => ({
                                 ...baseStyles,
                                 color: "oklab(0.786807 -0.0025776 -0.0110238)",
-                                background: "#202024",
+                                background: "var(--surface-higher)",
                                 marginTop: '8px',
                                 border: '1px solid #97979f1f',
                                 borderRadius: '8px'
@@ -266,7 +266,7 @@ export default function Modal({ form }: {
                               }),
                               singleValue: (baseStyles) => ({
                                 ...baseStyles,
-                                color: "oklab(0.899401 -0.00192499 -0.00481987)",
+                                color: "var(--text-normal)",
                                 margin: "0",
                                 alignItems: "center",
                                 display: "flex",
@@ -274,12 +274,12 @@ export default function Modal({ form }: {
                               }),
                               multiValue: (baseStyles) => ({
                                 ...baseStyles,
-                                backgroundColor: '#28282d',
+                                backgroundColor: 'var(--base-low)',
                                 borderRadius: '4px',
                               }),
                               multiValueLabel: (baseStyles) => ({
                                 ...baseStyles,
-                                color: '#fbfbfb',
+                                color: 'var(--interactive-active)',
                                 fontWeight: '600',
                               }),
                               placeholder: (baseStyles) => ({
@@ -307,7 +307,7 @@ export default function Modal({ form }: {
                               menu: (baseStyles) => ({
                                 ...baseStyles,
                                 color: "oklab(0.786807 -0.0025776 -0.0110238)",
-                                background: "#202024",
+                                background: "var(--surface-higher)",
                                 marginTop: '8px',
                                 border: '1px solid #97979f1f',
                                 borderRadius: '8px'
@@ -377,7 +377,7 @@ export default function Modal({ form }: {
                               }),
                               singleValue: (baseStyles) => ({
                                 ...baseStyles,
-                                color: "oklab(0.899401 -0.00192499 -0.00481987)",
+                                color: "var(--text-normal)",
                                 margin: "0",
                                 alignItems: "center",
                                 display: "flex",
@@ -385,12 +385,12 @@ export default function Modal({ form }: {
                               }),
                               multiValue: (baseStyles) => ({
                                 ...baseStyles,
-                                backgroundColor: '#28282d',
+                                backgroundColor: 'var(--base-low)',
                                 borderRadius: '4px',
                               }),
                               multiValueLabel: (baseStyles) => ({
                                 ...baseStyles,
-                                color: '#fbfbfb',
+                                color: 'var(--interactive-active)',
                                 fontWeight: '600',
                               }),
                               placeholder: (baseStyles) => ({
@@ -418,7 +418,7 @@ export default function Modal({ form }: {
                               menu: (baseStyles) => ({
                                 ...baseStyles,
                                 color: "oklab(0.786807 -0.0025776 -0.0110238)",
-                                background: "#202024",
+                                background: "var(--surface-higher)",
                                 marginTop: '8px',
                                 border: '1px solid #97979f1f',
                                 borderRadius: '8px'
@@ -488,7 +488,7 @@ export default function Modal({ form }: {
                               }),
                               singleValue: (baseStyles) => ({
                                 ...baseStyles,
-                                color: "oklab(0.899401 -0.00192499 -0.00481987)",
+                                color: "var(--text-normal)",
                                 margin: "0",
                                 alignItems: "center",
                                 display: "flex",
@@ -518,7 +518,7 @@ export default function Modal({ form }: {
                               menu: (baseStyles) => ({
                                 ...baseStyles,
                                 color: "oklab(0.786807 -0.0025776 -0.0110238)",
-                                background: "#202024",
+                                background: "var(--surface-higher)",
                                 marginTop: '8px',
                                 border: '1px solid #97979f1f',
                                 borderRadius: '8px'
@@ -582,7 +582,7 @@ export default function Modal({ form }: {
                               }),
                               singleValue: (baseStyles) => ({
                                 ...baseStyles,
-                                color: "oklab(0.899401 -0.00192499 -0.00481987)",
+                                color: "var(--text-normal)",
                                 margin: "0",
                                 alignItems: "center",
                                 display: "flex",
@@ -590,12 +590,12 @@ export default function Modal({ form }: {
                               }),
                               multiValue: (baseStyles) => ({
                                 ...baseStyles,
-                                backgroundColor: '#28282d',
+                                backgroundColor: 'var(--base-low)',
                                 borderRadius: '4px',
                               }),
                               multiValueLabel: (baseStyles) => ({
                                 ...baseStyles,
-                                color: '#fbfbfb',
+                                color: 'var(--interactive-active)',
                                 fontWeight: '600',
                               }),
                               placeholder: (baseStyles) => ({
@@ -623,7 +623,7 @@ export default function Modal({ form }: {
                               menu: (baseStyles) => ({
                                 ...baseStyles,
                                 color: "oklab(0.786807 -0.0025776 -0.0110238)",
-                                background: "#202024",
+                                background: "var(--surface-higher)",
                                 marginTop: '8px',
                                 border: '1px solid #97979f1f',
                                 borderRadius: '8px'

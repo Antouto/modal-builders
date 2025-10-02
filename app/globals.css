@@ -7,6 +7,9 @@
   --text-default: #323339;
   --text-muted: #6d6e77;
   --text-danger: #a4232c;
+  --header-primary: #2f3035;
+  --interactive-normal: #5f606a;
+  --interactive-active: #2f3035;
   --custom-input-background-color: #00000014;
   --custom-input-border-color: #97979f5c;
   --custom-input-text-color: #323339;
@@ -65,6 +68,8 @@
 @theme inline {
   --color-text-default: var(--text-default);
   --color-text-danger: var(--text-danger);
+  --color-header-primary: var(--header-primary);
+  --color-interactive-normal: var(--interactive-normal);
   --color-custom-input-background-color: var(--custom-input-background-color);
   --color-custom-input-border-color: var(--custom-input-border-color);
   --color-custom-input-text-color: var(--custom-input-text-color);
@@ -129,6 +134,9 @@
     --text-default: #efeff0;
     --text-muted: #94959c;
     --text-danger: #f57976;
+    --header-primary: #fbfbfb;
+    --interactive-normal: #aaaab1;
+    --interactive-active: #fbfbfb;
     --custom-input-border-color: #97979f33;
     --custom-input-text-color: #efeff0;
     --custom-input-hover-border-color: #97979f33;
