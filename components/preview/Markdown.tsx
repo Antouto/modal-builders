@@ -179,7 +179,7 @@ const headingRule = defineRule({
   },
   render(capture, render) {
     const common =
-      "mx-0 mb-[8px] mt-[16px] font-display font-bold leading-[1.375em] text-primary-130";
+      "mx-0 mb-[8px] mt-[16px] font-display font-bold leading-[1.375em] text-default";
 
     if (capture.level === 1) {
       return (
@@ -225,7 +225,7 @@ const footingRule = defineRule({
   },
   render(capture, render) {
     return (
-      <span className="block text-[calc(var(--font-size)*0.8125)] text-muted-dark">
+      <span className="block text-[calc(var(--font-size)*0.8125)] text-muted">
         {render(capture.content)}
       </span>
     );
@@ -233,7 +233,7 @@ const footingRule = defineRule({
 });
 
 export const codeBlockStyle =
-  "block overflow-x-auto whitespace-pre-wrap rounded border border-primary-200 bg-primary-130 p-[0.5em] indent-0 font-code text-[calc(var(--font-size)*0.875)] leading-[calc(var(--font-size)*1.125)] border-primary-700 bg-primary-630 text-primary-230 [[data-embed]_&]:border-none [[data-embed]_&]:bg-primary-700";
+  "block overflow-x-auto whitespace-pre-wrap rounded border border-primary-200 bg-primary-130 p-[0.5em] indent-0 font-code text-[calc(var(--font-size)*0.875)] leading-[calc(var(--font-size)*1.125)] border-primary-700 bg-primary-630 text-default [[data-embed]_&]:border-none [[data-embed]_&]:bg-primary-700";
 
 const codeBlockRule = defineRule({
   capture(source) {
@@ -286,7 +286,7 @@ const blockQuoteRule = defineRule({
   render(capture, render) {
     return (
       <div className="flex">
-        <div className="w-1 rounded bg-primary-500" />
+        <div className="w-1 rounded bg-spine-default" />
         <blockquote className="max-w-[90%] pl-3 pr-2 indent-0">
           {render(capture.content)}
         </blockquote>
@@ -413,7 +413,7 @@ const escapeRule = defineRule({
 });
 
 export const mentionStyle =
-  "rounded-[3px] px-[2px] font-semibold [unicode-bidi:plaintext] bg-[#5865f23d] text-[#a9baff] transition-colors transition-[50ms]";
+  "rounded-[3px] px-[2px] font-semibold [unicode-bidi:plaintext] bg-mention-background text-mention-foreground transition-colors transition-[50ms]";
 const actionableMentionStyle = twMerge(
   mentionStyle,
   "cursor-pointer hover:bg-[#5865F2] hover:text-white",

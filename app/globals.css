@@ -15,6 +15,9 @@
   --custom-input-text-color: #323339;
   --custom-input-hover-border-color: #97979f5c;
   --custom-input-focus-border-color: #0074e3;
+  --mention-foreground: #2e3c89;
+  --mention-background: #5865f23d;
+  --spine-default: #97979f7a;
   --base-lowest: #f3f3f4;
   --base-lower: #fbfbfb;
   --base-low: #fbfbfb;
@@ -75,6 +78,9 @@
   --color-custom-input-text-color: var(--custom-input-text-color);
   --color-custom-input-hover-border-color: var(--custom-input-hover-border-color);
   --color-custom-input-focus-border-color: var(--custom-input-focus-border-color);
+  --color-mention-foreground: var(--mention-foreground);
+  --color-mention-background: var(--mention-background);
+  --color-spine-default: var(--spine-default);
   --color-text-muted: var(--text-muted);
   --color-base-lowest: var(--base-lowest);
   --color-base-lower: var(--base-lower);
@@ -141,6 +147,9 @@
     --custom-input-text-color: #efeff0;
     --custom-input-hover-border-color: #97979f33;
     --custom-input-focus-border-color: #5197ed;
+    --mention-foreground: #a9baff;
+    --mention-background: #5865f23d;
+    --spine-default: #97979f70;
     --base-lowest: #121214;
     --base-lower: #1a1a1e;
     --base-low: #202024;

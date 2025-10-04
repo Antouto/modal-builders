@@ -667,7 +667,7 @@ export default function Modal({ form }: {
                 const textDisplay = component;
                 return <div key={index} className="pr-[18px] pb-[1em] pl-6">
                   <div
-                    className="contents text-white dark:text-primary-230 font-normal leading-[1.375] whitespace-pre-line break-all space-y-[2px]"
+                    className="contents font-normal leading-[1.375] whitespace-pre-line break-all space-y-[2px]"
                     style={{
                       // @ts-expect-error CSS variable
                       "--font-size": "1rem",
