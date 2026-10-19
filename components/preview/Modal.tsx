@@ -102,6 +102,7 @@ export default function Modal({ form }: {
                       switch (label.component.type) {
                         case ComponentType.StringSelect:
                           return <ReactSelect
+                            instanceId={`modal-select-${index}`}
                             className="w-full"
                             isClearable={false}
                             isSearchable={false}
@@ -231,6 +232,7 @@ export default function Modal({ form }: {
 
                         case ComponentType.UserSelect:
                           return <ReactSelect
+                            instanceId={`modal-select-${index}`}
                             className="w-full"
                             isClearable={true}
                             isSearchable={true}
@@ -335,6 +337,7 @@ export default function Modal({ form }: {
 
                         case ComponentType.ChannelSelect:
                           return <ReactSelect
+                            instanceId={`modal-select-${index}`}
                             className="w-full"
                             isClearable={true}
                             isSearchable={true}
@@ -446,6 +449,7 @@ export default function Modal({ form }: {
 
                         case ComponentType.RoleSelect:
                           return <ReactSelect
+                            instanceId={`modal-select-${index}`}
                             className="w-full"
                             isClearable={true}
                             isSearchable={true}
@@ -546,6 +550,7 @@ export default function Modal({ form }: {
 
                         case ComponentType.MentionableSelect:
                           return <ReactSelect
+                            instanceId={`modal-select-${index}`}
                             className="w-full"
                             isClearable={true}
                             isSearchable={true}

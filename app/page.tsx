@@ -28,7 +28,7 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import TextDisplayEditor from "@/components/editor/TextDisplayEditor";
 import Modal from "@/components/preview/Modal";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
@@ -117,6 +117,7 @@ export default function Home() {
   const [isUrlTooLong, setIsUrlTooLong] = useState(false);
   const isInitialMount = useRef(true);
   const [codeGenMode, setCodeGenMode] = useState<'json' | 'djs'>('json');
+  const initialCustomId = useId().replace(/:/g, '');
 
   const form = useForm<z.infer<typeof modalSchema>>({
     resolver: zodResolver(modalSchema),
@@ -129,7 +130,7 @@ export default function Home() {
         label: "Text Input",
         component: {
           type: ComponentType.TextInput,
-          custom_id: crypto.randomUUID().replace(/-/g, ''),
+          custom_id: initialCustomId,
           style: TextInputStyle.Short,
         }
       }]
@@ -318,7 +319,14 @@ export default function Home() {
                         </DndContext>
                         <div className="flex gap-1">
                           <DropdownMenu>
-                            <DropdownMenuTrigger className="outline-none"><Button>Add<svg className="transition-transform duration-200 rotate-180 flex-shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 10L8 6L4 10" stroke="#fbfbfb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></svg></Button></DropdownMenuTrigger>
+                            <DropdownMenuTrigger asChild className="outline-none">
+                              <Button>
+                                Add
+                                <svg className="transition-transform duration-200 rotate-180 flex-shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path d="M12 10L8 6L4 10" stroke="#fbfbfb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                                </svg>
+                              </Button>
+                            </DropdownMenuTrigger>
                             <DropdownMenuContent align='start' className='bg-surface-higher border-border-subtle text-text-default p-2'>
                               <DropdownMenuItem
                                 disabled={fields.length >= 5}
@@ -479,6 +487,7 @@ export default function Home() {
             <p className="font-semibold">Code</p>
           </div>
           <ReactSelect
+            instanceId="code-generation-mode"
             value={codeGenMode === 'json' ? { value: 'json', label: 'JSON' } : { value: 'djs', label: 'discord.js' }}
             onChange={(option: any) => handleCodeGenModeChange(option.value)}
             options={[
