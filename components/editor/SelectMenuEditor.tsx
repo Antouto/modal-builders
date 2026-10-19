@@ -189,6 +189,7 @@ export default function SelectMenuEditor({
                 <FormLabel>Channel Types</FormLabel>
                 <FormControl>
                   <FormReactSelect
+                    instanceId={`channel-types-${index}`}
                     className="w-full"
                     onChange={(options: { label: string, value: number }[] | null) => {
                       const values = Array.isArray(options)
